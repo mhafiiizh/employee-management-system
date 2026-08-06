@@ -2,8 +2,8 @@ package com.hafizh.ems.service;
 
 import java.util.List;
 
-import com.hafizh.ems.dto.request.CreateDepartmentRequest;
-import com.hafizh.ems.dto.request.UpdateDepartmentRequest;
+import com.hafizh.ems.dto.request.department.CreateDepartmentRequest;
+import com.hafizh.ems.dto.request.department.UpdateDepartmentRequest;
 import com.hafizh.ems.dto.response.DepartmentResponse;
 
 public interface DepartmentService {

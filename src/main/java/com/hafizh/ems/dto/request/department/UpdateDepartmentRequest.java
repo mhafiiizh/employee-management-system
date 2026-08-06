@@ -1,4 +1,4 @@
-package com.hafizh.ems.dto.request;
+package com.hafizh.ems.dto.request.department;
 
 import jakarta.validation.constraints.Size;
 import lombok.Getter;

@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.hafizh.ems.dto.request.CreateDepartmentRequest;
-import com.hafizh.ems.dto.request.UpdateDepartmentRequest;
+import com.hafizh.ems.dto.request.department.CreateDepartmentRequest;
+import com.hafizh.ems.dto.request.department.UpdateDepartmentRequest;
 import com.hafizh.ems.dto.response.DepartmentResponse;
 import com.hafizh.ems.entity.Department;
 import com.hafizh.ems.exception.DuplicateResourceException;

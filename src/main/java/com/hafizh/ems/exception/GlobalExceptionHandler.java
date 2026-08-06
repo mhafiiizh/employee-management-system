@@ -1,5 +1,7 @@
 package com.hafizh.ems.exception;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -56,9 +58,12 @@ public class GlobalExceptionHandler {
                 HttpStatus.BAD_REQUEST);
     }
 
+    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse<Void>> handleInternalError(
             Exception ex) {
+        log.error("An unexpected error occurred", ex);
         return new ResponseEntity<>(
                 ApiResponse.error("An unexpected error occurred"),
                 HttpStatus.INTERNAL_SERVER_ERROR);

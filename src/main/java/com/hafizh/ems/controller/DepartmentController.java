@@ -3,11 +3,10 @@ package com.hafizh.ems.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hafizh.ems.dto.request.CreateDepartmentRequest;
-import com.hafizh.ems.dto.request.UpdateDepartmentRequest;
+import com.hafizh.ems.dto.request.department.CreateDepartmentRequest;
+import com.hafizh.ems.dto.request.department.UpdateDepartmentRequest;
 import com.hafizh.ems.dto.response.ApiResponse;
 import com.hafizh.ems.dto.response.DepartmentResponse;
-import com.hafizh.ems.entity.Department;
 import com.hafizh.ems.service.DepartmentService;
 
 import jakarta.validation.Valid;
@@ -21,7 +20,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController

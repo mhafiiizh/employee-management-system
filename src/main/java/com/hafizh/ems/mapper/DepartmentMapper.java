@@ -2,8 +2,8 @@ package com.hafizh.ems.mapper;
 
 import org.springframework.stereotype.Component;
 
-import com.hafizh.ems.dto.request.CreateDepartmentRequest;
-import com.hafizh.ems.dto.request.UpdateDepartmentRequest;
+import com.hafizh.ems.dto.request.department.CreateDepartmentRequest;
+import com.hafizh.ems.dto.request.department.UpdateDepartmentRequest;
 import com.hafizh.ems.dto.response.DepartmentResponse;
 import com.hafizh.ems.entity.Department;
 
