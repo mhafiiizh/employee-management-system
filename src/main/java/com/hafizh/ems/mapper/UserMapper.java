@@ -3,7 +3,7 @@ package com.hafizh.ems.mapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import com.hafizh.ems.dto.request.user.RegisterRequest;
+import com.hafizh.ems.dto.request.auth.RegisterRequest;
 import com.hafizh.ems.dto.response.UserResponse;
 import com.hafizh.ems.entity.Role;
 import com.hafizh.ems.entity.User;
