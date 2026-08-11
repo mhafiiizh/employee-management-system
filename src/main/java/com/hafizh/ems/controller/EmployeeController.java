@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +32,7 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping
     public ResponseEntity<ApiResponse<List<EmployeeResponse>>> getAll() {
         List<EmployeeResponse> employees = employeeService.getAll();
@@ -39,6 +41,7 @@ public class EmployeeController {
                 ApiResponse.success("Employees retrieved successfully", employees));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<ApiResponse<EmployeeResponse>> create(@Valid @RequestBody CreateEmployeeRequest request) {
         EmployeeResponse employee = employeeService.create(request);
@@ -46,12 +49,14 @@ public class EmployeeController {
                 .body(ApiResponse.success("Employee created successfully", employee));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse<EmployeeResponse>> getById(@PathVariable Long id) {
         EmployeeResponse employee = employeeService.getById(id);
         return ResponseEntity.ok(ApiResponse.success("Employee retrieved successfully", employee));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<EmployeeResponse>> update(@PathVariable Long id,
             @Valid @RequestBody UpdateEmployeeRequest request) {
@@ -59,6 +64,7 @@ public class EmployeeController {
         return ResponseEntity.ok(ApiResponse.success("Employee updated successfully", employee));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse<Void>> delete(@PathVariable Long id) {
         employeeService.delete(id);

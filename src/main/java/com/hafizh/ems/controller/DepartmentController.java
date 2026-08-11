@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +32,7 @@ public class DepartmentController {
         this.departmentService = departmentService;
     }
 
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping
     public ResponseEntity<ApiResponse<List<DepartmentResponse>>> getAll() {
         List<DepartmentResponse> departments = departmentService.getAll();
@@ -39,6 +41,7 @@ public class DepartmentController {
                 ApiResponse.success("Departments retrieved successfully", departments));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<ApiResponse<DepartmentResponse>> create(@Valid @RequestBody CreateDepartmentRequest request) {
         DepartmentResponse department = departmentService.create(request);
@@ -47,6 +50,7 @@ public class DepartmentController {
                 .body(ApiResponse.success("Department created successfully", department));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse<DepartmentResponse>> getById(@PathVariable Long id) {
         DepartmentResponse department = departmentService.getById(id);
@@ -54,6 +58,7 @@ public class DepartmentController {
         return ResponseEntity.ok(ApiResponse.success("Department retrieved succesfully", department));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<DepartmentResponse>> update(@PathVariable Long id,
             @RequestBody UpdateDepartmentRequest request) {
@@ -62,6 +67,7 @@ public class DepartmentController {
         return ResponseEntity.ok(ApiResponse.success("Department updated successfully", department));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse<Void>> delete(@PathVariable Long id) {
         departmentService.delete(id);
